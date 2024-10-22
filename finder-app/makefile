@@ -9,7 +9,7 @@ CC = gcc
 
 ifeq ($(CROSS_COMPILE), aarch64-none-linux-gnu-gcc)
 	Compiler = $(CROSS_COMPILE)
-	CC = /home/oussama/arm-cross-compiler/arm-gnu-toolchain-13.3.rel1-x86_64-aarch64-none-linux-gnu/bin/$(CROSS_COMPILE)
+	CC = $(CROSS_COMPILE)
 endif
 
 # Default target
