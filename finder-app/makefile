@@ -1,15 +1,11 @@
 # Makefile
 
-Compiler = Native Compiler
 TARGET = writer
-CFLAGS = -Wall
 OBJ = writer.o
 SRC = writer.c
-CC = gcc
 
-ifeq ($(CROSS_COMPILE), aarch64-none-linux-gnu-gcc)
-	Compiler = $(CROSS_COMPILE)
-	CC = $(CROSS_COMPILE)
+ifeq ($(CROSS_COMPILE),)
+	CC = gcc
 endif
 
 # Default target
@@ -20,8 +16,8 @@ $(TARGET): $(OBJ)
 
 %.o: %.c
 	@echo --------- Start build ----------
-	@echo Compiler: $(Compiler)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo Compiler: $(CC)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	@echo --------- Finished build -----------
 	@echo
 
